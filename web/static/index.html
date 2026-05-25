@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocsForge</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-inner">
+                <div class="logo">
+                    <span class="logo-mark">DF</span>
+                    <span class="logo-text">DocsForge</span>
+                </div>
+                <div class="header-meta">
+                    <span class="model-badge" id="modelBadge">loading...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <h1 class="hero-title">DocsForge</h1>
+            <p class="hero-subtitle">Multi-agent documentation generator</p>
+        </section>
+
+        <!-- Input Section -->
+        <section class="section">
+            <div class="input-card">
+                <div class="input-tabs">
+                    <button class="tab active" data-tab="path" onclick="switchTab('path')">Directory Path</button>
+                    <button class="tab" data-tab="code" onclick="switchTab('code')">Paste Code</button>
+                </div>
+                <div class="input-body">
+                    <div id="pathInput" class="tab-content active">
+                        <input type="text" id="pathField" class="text-input" placeholder="/path/to/your/project" spellcheck="false">
+                    </div>
+                    <div id="codeInput" class="tab-content">
+                        <div class="code-input-row">
+                            <select id="langSelect" class="select-input">
+                                <option value="python">Python</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="typescript">TypeScript</option>
+                                <option value="go">Go</option>
+                                <option value="rust">Rust</option>
+                                <option value="java">Java</option>
+                                <option value="ruby">Ruby</option>
+                            </select>
+                        </div>
+                        <textarea id="codeField" class="code-textarea" placeholder="Paste your source code here..." spellcheck="false"></textarea>
+                    </div>
+                    <button id="generateBtn" class="btn-primary" onclick="startGeneration()">
+                        Generate Documentation
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section class="section" id="progressSection" style="display:none;">
+            <div class="section-label">Pipeline Progress</div>
+            <div class="progress-grid">
+                <div class="agent-card" id="agent-ArchitectureAgent">
+                    <div class="agent-indicator"></div>
+                    <div class="agent-name">Architecture</div>
+                    <div class="agent-status">Waiting</div>
+                    <div class="agent-duration"></div>
+                </div>
+                <div class="agent-card" id="agent-APIAgent">
+                    <div class="agent-indicator"></div>
+                    <div class="agent-name">API</div>
+                    <div class="agent-status">Waiting</div>
+                    <div class="agent-duration"></div>
+                </div>
+                <div class="agent-card" id="agent-ExamplesAgent">
+                    <div class="agent-indicator"></div>
+                    <div class="agent-name">Examples</div>
+                    <div class="agent-status">Waiting</div>
+                    <div class="agent-duration"></div>
+                </div>
+                <div class="agent-card" id="agent-ChangelogAgent">
+                    <div class="agent-indicator"></div>
+                    <div class="agent-name">Changelog</div>
+                    <div class="agent-status">Waiting</div>
+                    <div class="agent-duration"></div>
+                </div>
+                <div class="agent-card" id="agent-ConfigAgent">
+                    <div class="agent-indicator"></div>
+                    <div class="agent-name">Config</div>
+                    <div class="agent-status">Waiting</div>
+                    <div class="agent-duration"></div>
+                </div>
+            </div>
+            <div class="pipeline-stage" id="pipelineStage">
+                <div class="stage-indicator"></div>
+                <span id="stageText">Initializing...</span>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="section" id="resultsSection" style="display:none;">
+            <div class="results-grid">
+                <!-- Quality Score -->
+                <div class="score-card">
+                    <div class="score-header">Quality Score</div>
+                    <div class="score-number" id="scoreNumber">--</div>
+                    <div class="score-reasoning" id="scoreReasoning"></div>
+                    <div class="score-bars" id="scoreBars"></div>
+                    <div class="score-recommendations" id="scoreRecommendations"></div>
+                </div>
+
+                <!-- Token Stats -->
+                <div class="stats-card">
+                    <div class="stats-header">Token Usage</div>
+                    <div class="stats-grid" id="statsGrid"></div>
+                </div>
+
+                <!-- Scan Info -->
+                <div class="scan-card">
+                    <div class="scan-header">Scan Summary</div>
+                    <div class="scan-grid" id="scanGrid"></div>
+                </div>
+            </div>
+
+            <!-- Docs Preview -->
+            <div class="docs-card">
+                <div class="docs-header">
+                    <span>Generated Documentation</span>
+                    <div class="docs-tabs" id="docsTabs"></div>
+                </div>
+                <div class="docs-body" id="docsBody">
+                    <div class="skeleton-block"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="section" id="historySection">
+            <div class="section-label">Recent Runs</div>
+            <div class="history-list" id="historyList">
+                <div class="skeleton-block short"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
