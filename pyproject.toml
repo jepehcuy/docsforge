@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docsforge"
+version = "0.1.0"
+description = "Multi-agent documentation generation system using AI"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "jepehcuy"}]
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.10.0",
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.0.0",
+    "aiosqlite>=0.19.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.25.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[project.scripts]
+docsforge = "cli:app"
+
+[tool.setuptools]
+py-modules = ["cli"]
+
+[tool.setuptools.packages.find]
+include = ["core*", "agents*", "eval*", "db*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
