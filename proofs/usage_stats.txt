@@ -1,0 +1,40 @@
+DocsForge Usage Stats
+=====================
+Date: 2026-05-26
+Model: kr/claude-sonnet-4.5 (via 9router)
+
+Real-World Run: httpx (encode/httpx)
+------------------------------------
+Target:    https://github.com/encode/httpx (HTTP client library)
+Files:     116 scanned, 26,868 lines
+Languages: Python (60 files), Markdown (26), TOML, YAML, HTML, CSS
+
+Pipeline:
+- Scanner:        0.2s (file tree + language detection)
+- 5 Agents:      82.1s (parallel LLM calls)
+- Synthesis:    122.5s (merge + mkdocs generation)
+- Eval:           9.2s (LLM-as-judge scoring)
+- TOTAL:        214.1s (3.6 minutes)
+
+Token Usage:
+- Total:     158,501 tokens
+- Calls:     7 (5 agents + 1 synthesis + 1 eval)
+- Per-agent: ~31K avg
+
+Quality Score: 72/100
+- Completeness: 75
+- Accuracy:     80
+- Clarity:      78
+- Structure:    70
+- Usefulness:   68
+
+Output:
+- architecture.md (9,166 chars)
+- index.md (3,786 chars)
+- quickstart.md (4,358 chars)
+- mkdocs.yml config
+
+Database:
+- SQLite incremental cache at .docsforge/cache.db
+- File hash tracking for incremental re-generation
+- Agent output caching (skip unchanged files)
