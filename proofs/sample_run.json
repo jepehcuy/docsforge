@@ -1,0 +1,19 @@
+{
+  "target_repo": "httpx",
+  "target_url": "https://github.com/encode/httpx",
+  "files_scanned": 116,
+  "lines_scanned": 26868,
+  "languages": {"python": 60, "markdown": 26, "toml": 1, "yaml": 1, "html": 1, "css": 1, "json": 1, "text": 1, "unknown": 24},
+  "agents": ["ArchitectureAgent", "APIAgent", "ExamplesAgent", "ChangelogAgent", "ConfigAgent"],
+  "model": "kr/claude-sonnet-4.5",
+  "duration_seconds": 214.1,
+  "agent_duration_seconds": 82.1,
+  "synthesis_duration_seconds": 122.5,
+  "eval_duration_seconds": 9.2,
+  "quality_score": 72,
+  "quality_breakdown": {"completeness": 75, "accuracy": 80, "clarity": 78, "structure": 70, "usefulness": 68},
+  "token_usage": {"total": 158501, "calls": 7},
+  "output_pages": ["architecture.md", "index.md", "quickstart.md"],
+  "run_id": 1,
+  "timestamp": "2026-05-26T05:58:00Z"
+}

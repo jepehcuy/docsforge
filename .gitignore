@@ -30,6 +30,7 @@ Thumbs.db
 # DocsForge output
 site-docs/
 proofs/*.json
+!proofs/sample_run.json
 proofs/*.md
 !proofs/.gitkeep
 
