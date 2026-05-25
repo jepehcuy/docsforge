@@ -11,8 +11,10 @@ import sys
 import time
 from pathlib import Path
 
-import typer
 from dotenv import load_dotenv
+load_dotenv()  # Load env BEFORE importing modules that read os.environ at import time
+
+import typer
 
 app = typer.Typer(
     name="docsforge",

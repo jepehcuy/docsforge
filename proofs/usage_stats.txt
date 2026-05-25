@@ -1,40 +1,50 @@
 DocsForge Usage Stats
 =====================
-Date: 2026-05-26
-Model: kr/claude-sonnet-4.5 (via 9router)
+Date: 2026-05-25
+Model: xmtp/mimo-v2.5 (Xiaomi MiMo via 9router)
 
 Real-World Run: httpx (encode/httpx)
 ------------------------------------
-Target:    https://github.com/encode/httpx (HTTP client library)
+Target:    https://github.com/encode/httpx (Python HTTP client library)
 Files:     116 scanned, 26,868 lines
-Languages: Python (60 files), Markdown (26), TOML, YAML, HTML, CSS
+Languages: Python (60 files), Markdown (26), TOML, YAML, HTML, CSS, JSON
 
 Pipeline:
 - Scanner:        0.2s (file tree + language detection)
-- 5 Agents:      82.1s (parallel LLM calls)
-- Synthesis:    122.5s (merge + mkdocs generation)
-- Eval:           9.2s (LLM-as-judge scoring)
-- TOTAL:        214.1s (3.6 minutes)
+- 5 Agents:      39.5s (parallel LLM calls via xmtp/mimo-v2.5)
+- Synthesis:     54.0s (merge + mkdocs site generation)
+- Eval:           7.5s (LLM-as-judge quality scoring)
+- TOTAL:        101.2s (~1.7 minutes)
 
 Token Usage:
-- Total:     158,501 tokens
+- Total:     63,188 tokens
 - Calls:     7 (5 agents + 1 synthesis + 1 eval)
-- Per-agent: ~31K avg
+- Per-agent: ~9K avg
 
-Quality Score: 72/100
-- Completeness: 75
-- Accuracy:     80
-- Clarity:      78
-- Structure:    70
-- Usefulness:   68
+Quality Score: 68/100
+- Completeness: 68
+- Accuracy:     75
+- Clarity:      72
+- Structure:    75
+- Usefulness:   70
 
-Output:
-- architecture.md (9,166 chars)
-- index.md (3,786 chars)
-- quickstart.md (4,358 chars)
-- mkdocs.yml config
+Output (6 mkdocs pages):
+- index.md
+- architecture.md
+- api-reference.md
+- examples.md
+- configuration.md
+- changelog.md
+- mkdocs.yml site config
 
 Database:
 - SQLite incremental cache at .docsforge/cache.db
 - File hash tracking for incremental re-generation
-- Agent output caching (skip unchanged files)
+- Agent output caching (skip unchanged files between runs)
+
+Token Economics (extrapolated):
+- Small repo (~5K LOC):    ~30K tokens
+- Medium repo (~25K LOC):  ~65K tokens (this run)
+- Large repo (~100K LOC):  ~250K tokens
+- Monorepo (~500K LOC):    ~1.5M tokens
+- CI/CD per project:       10-20M tokens/month (auto-rebuild on every merge)

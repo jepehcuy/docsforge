@@ -1,0 +1,8 @@
+site_name: HTTPX
+site_description: Python HTTP client library. Full-featured. Sync/async support. HTTP/1.1 and HTTP/2.
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo

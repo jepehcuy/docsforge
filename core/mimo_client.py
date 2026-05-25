@@ -75,7 +75,7 @@ def get_mimo_client() -> AsyncOpenAI:
     )
 
 
-MIMO_MODEL = os.environ.get("MIMO_MODEL", "kr/claude-sonnet-4.5")
+MIMO_MODEL = os.environ.get("MIMO_MODEL") or os.environ.get("DOCSFORGE_MODEL", "kr/claude-sonnet-4.5")
 
 
 async def mimo_chat(
